@@ -1,0 +1,47 @@
+
+
+/* ==========================================================================
+   Estilos Taller 3 - Juan Carlos Micolta
+   ========================================================================== */
+
+
+body {
+	background-color: #F6B17F;
+	color: #FFFFFF;
+}
+
+
+#espacioUno{
+height:25px;	
+}
+
+#drop{
+background-color:#257E78; 
+width:300px; 
+height:300px;	
+opacity: 0.8;
+}
+
+#mapa{
+width:600px; 
+height:300px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
