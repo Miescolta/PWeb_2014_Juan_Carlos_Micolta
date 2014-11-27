@@ -14,6 +14,7 @@
         ];
 
         var mapOptions = {
+          //Lalitud y longitud en donde empieza el mapa que se muestra
           center: new google.maps.LatLng(3.425675924511549, -76.55270937499995),
           zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
