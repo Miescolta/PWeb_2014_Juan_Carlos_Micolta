@@ -31,54 +31,59 @@ function initialize(r){
        }
    }
 
+//--------------Funciones de accion--------------
+
+   function ingresar(e){
+    e.preventDefault();
+   
+    var texto=document.getElementById('texto');
+    texto.style.visibility='hidden';
+   }
+
+   function out(e){
+    e.preventDefault();
+    soltar.style.background='#FFFFFF';
+   }
+
+   function end(e){
+    elemento=e.target;
+    elemento.style.visibility='hidden';
+   }
+
+   function drag(e){
+    elemento=e.target;
+    e.dataTransfer.setData('Text',elemento.getAttribute('id'));
+    e.dataTransfer.setDragImage(e.target,62,62);
+   }
+
+//-----------------------------------------------
 
 
+//----------------------------------------------
    function iniciar(){
 
-   	/**DRAG AND DROP**/
    	var imagenes=document.querySelectorAll('#cajaImagenes > img');
    	for(var i=0; i<imagenes.length;i++){
-   		imagenes[i].addEventListener('dragstart',arrastrado,false);
-   		imagenes[i].addEventListener('dragend',finalizado,false)
+   		imagenes[i].addEventListener('dragstart',drag,false);
+   		imagenes[i].addEventListener('dragend',end,false)
    	}
    	soltar=document.getElementById('lienzo');
    	lienzo=soltar.getContext('2d');
-   	soltar.addEventListener('dragenter',entrando,false);
-   	soltar.addEventListener('dragleave',saliendo,false);
+   	soltar.addEventListener('dragenter',ingresar,false);
+   	soltar.addEventListener('dragleave',out,false);
    	soltar.addEventListener('dragover',function(e){
    		e.preventDefault();},false);
 
-   	soltar.addEventListener('drop', soltado, false);
+   	soltar.addEventListener('drop', drop, false);
    }
 
+//----------------------------------------------------
+  
 
-   /*** DRAG AND DROP**/
-   function entrando(e){
-   	e.preventDefault();
-   
-   	var texto=document.getElementById('texto');
-   	texto.style.visibility='hidden';
-   }
-
-   function saliendo(e){
-   	e.preventDefault();
-   	soltar.style.background='#FFFFFF';
-   }
-
-   function finalizado(e){
-   	elemento=e.target;
-   	elemento.style.visibility='hidden';
-   }
-
-   function arrastrado(e){
-   	elemento=e.target;
-   	e.dataTransfer.setData('Text',elemento.getAttribute('id'));
-   	e.dataTransfer.setDragImage(e.target,62,62);
-   }
 
 	
-
-	function soltado(e){
+//--------------------------------------------------
+	function drop(e){
 		e.preventDefault();
 		var id=e.dataTransfer.getData('Text');
 		var elemento=document.getElementById(id);
@@ -88,6 +93,8 @@ function initialize(r){
 		lienzo.drawImage(elemento,posX-100,posY-100);
 
 		//Por medio de la funcion post se revisa en el data.php
+
+    //---------------------------------------------
 		$.ajax({
 			type: "POST",
 			url: "data.php",
