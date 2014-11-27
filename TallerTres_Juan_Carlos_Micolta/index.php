@@ -4,6 +4,7 @@
 Tambien se utilizaron estos tutoriales como apoyo :
 http://stackoverflow.com/questions/16554748/adding-multiple-markers-to-google-map
 http://www.tutorialspoint.com/html5/html5_drag_drop.htm
+507980
 */
 
 ?>
